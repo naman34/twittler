@@ -102,6 +102,10 @@ header {
 		height: auto;
 		max-height: none;
 	}
+	body:after {
+		content: "mobile";
+		display: none;
+	}
 	aside {
 		width: 100%;
 		position: fixed;

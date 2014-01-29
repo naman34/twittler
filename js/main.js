@@ -9,13 +9,19 @@
 		for(var i = $('.tweets .tweet').length; i < streams.home.length; i++){
 			$tweets.prepend(tweetTemplate(streams.home[i]));
 			
-			//converts timestamps into human-readable time-ago format, and autoupdates.
-			$($('.tweet')[0]).find('.time').timeago();
+			
 
 			//making sure the timeline doesn't keep scrolling by at the amzing intense speed.
 			if($('.tweet').length > 5){
-				$('.tweets').scrollTop($('.tweets').scrollTop() + 73 + $($('.tweet')[0]).height());	
+				if(window.getComputedStyle(document.body,':after').getPropertyValue('content') === "mobile"){
+					$(window).scrollTop($(window).scrollTop() + $($('.tweet')[0]).outerHeight());	
+				} else {
+					$('.tweets').scrollTop($('.tweets').scrollTop() + $($('.tweet')[0]).outerHeight());	
+				}
 			}
+
+			//converts timestamps into human-readable time-ago format, and autoupdates.
+			$($('.tweet')[0]).find('.time').timeago();
 
 		}
 	}
@@ -28,13 +34,19 @@
 			for(var i = $('.tweets .tweet').length; i < streams.users[username].length; i++){
 				$tweets.prepend(tweetTemplate(streams.users[username][i]));
 				
-				//converts timestamps into human-readable time-ago format, and autoupdates.
-				$($('.tweet')[0]).find('.time').timeago();
+				
 
 				//making sure the timeline doesn't keep scrolling by at the amzing intense speed.
 				if($('.tweet').length > 5){
-					$('.tweets').scrollTop($('.tweets').scrollTop() + 73 + $($('.tweet')[0]).height());	
+					if(window.getComputedStyle(document.body,':after').getPropertyValue('content') === "mobile"){
+						$(window).scrollTop($(window).scrollTop() + $($('.tweet')[0]).outerHeight());	
+					} else {
+						$('.tweets').scrollTop($('.tweets').scrollTop() + $($('.tweet')[0]).outerHeight());	
+					}
 				}
+
+				//converts timestamps into human-readable time-ago format, and autoupdates.
+				$($('.tweet')[0]).find('.time').timeago();
 
 			}
 		} else {
