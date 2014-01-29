@@ -14,20 +14,7 @@ body {
 	min-height: 100%;
 }
 
-aside h1 {
-	font-size: 4rem;
-	font-weight: 100;
-	margin: 0;
-	border-bottom: 1px solid rgba(0,0,0,0.1);
-	padding: 1rem 0;
-	color: rgb(81,150,221);
-	letter-spacing: 2px;
-}
 
-aside h1 a {
-	color: inherit;
-	text-decoration: none;
-}
 
 .container {
 	width: 100%;
@@ -43,8 +30,118 @@ aside {
 	vertical-align: top;
 }
 
-header {
+aside h1 {
+	font-size: 4rem;
+	font-weight: 100;
+	margin: 0;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	padding: 1rem 0;
+	color: rgb(81,150,221);
+	letter-spacing: 2px;
+}
 
+aside h1 a {
+	color: inherit;
+	text-decoration: none;
+}
+
+nav {
+	text-align: right;
+}
+
+nav div {
+	position: relative;
+	width: 100%;
+}
+
+nav div input[type="checkbox"]{
+	display: none;
+}
+
+nav div form {
+	display: none;
+	position: absolute;
+	background: white;
+	top: 3.5rem;
+	right: 0;
+	width: 100%;
+	padding: 0;
+	text-align: left;
+}
+nav div form::after {
+	content: "";
+	position: absolute;
+	top: -1rem;
+	right: 1.5rem;
+	display: block;
+	width: 0;
+	height: 1px;
+	border-bottom: 1rem solid white;
+	border-right: 0.75rem solid transparent;
+	border-left: 0.75rem solid transparent;
+}
+
+nav div form::before {
+	content: "@me";
+	display: block;
+	font-size: 1rem;
+	color: black;
+	font-weight: bold;
+	padding: 0.5rem;
+}
+
+nav div form textarea {
+	width: 100%;
+	border: 0;
+	outline: none;
+	padding: 0.5rem;
+	height: 6rem;
+	font-size: 1rem;
+	line-height: 150%;
+	color: rgb(120,120,120);
+}
+
+nav div form textarea:focus {
+	background: rgb(250,250,255);
+	color: black;
+}
+
+nav div form span {
+	position: absolute;
+	right: 0.5rem;
+	bottom: 1rem;
+	color: rgb(200,200,200);
+	font-size: 0.6rem;
+}
+
+nav div form span::after {
+	content: " characters left";
+}
+
+nav div form input[type="submit"] {
+	margin: 0.5rem;
+	border: 0;
+	outline: 0;
+	background: rgb(81,150,221);
+	color: white;
+	padding: 0.5rem 2rem;
+	border-radius: 2rem;
+}
+
+nav label {
+	text-decoration: none;
+	color: rgba(0,0,0,0.4);
+	display: inline-block;
+	padding: 1rem;
+}
+
+nav label:hover {
+	color: black;
+}
+
+nav div input[type="checkbox"]:checked ~ form {
+	display: block;
+	
 }
 
 .tweets {
@@ -124,5 +221,11 @@ header {
 		width: 100%;
 		overflow: visible;
 		margin-top: 4rem;
+	}
+	nav {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 100%;
 	}
 }

@@ -101,4 +101,46 @@
 		return string;
 	}
 
+	//end of publishing Beginning of tweeting code.
+
+	streams.users.me = [];
+
+	$('textarea').on('input', function(e){
+		e.preventDefault();
+
+		var noOfCharacters = ($('textarea').val() + "").length;
+		$('form span').text(140 - noOfCharacters);
+		if(noOfCharacters > 140){
+			$('form span').css('color','red');
+			return false;
+		} else {
+			$('form span').css('color','');
+		}
+	});
+
+	$('form').on('submit', function(e){
+
+		e.preventDefault();
+
+		var tweet = $('textarea').val();
+
+		if(tweet.length > 140){
+			alert("You have exceeded the number of characters permitted!");
+		} else {
+			addTweet({
+				user: "me",
+				message: tweet
+			});
+
+			$('textarea').val('');
+			$('input[type="checkbox"]').attr('checked', false);
+			if(window.getComputedStyle(document.body,':after').getPropertyValue('content') === "mobile"){
+				$(window).scrollTop(0);	
+			} else {
+				$('.tweets').scrollTop(0);
+			}
+		}
+
+	});
+
 })(this, $)
